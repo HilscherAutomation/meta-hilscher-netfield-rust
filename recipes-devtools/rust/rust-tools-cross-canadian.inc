@@ -7,7 +7,7 @@ RUST_TOOLS_PKGS = "${RUST_TOOLS_CLIPPY_PN} ${RUST_TOOLS_RUSTFMT_PN}"
 PN = "rust-tools-cross-canadian-${TRANSLATED_TARGET_ARCH}"
 
 PACKAGES = "${RUST_TOOLS_CLIPPY_PN} ${RUST_TOOLS_RUSTFMT_PN} ${PN}"
-RDEPENDS_${PN} += "${RUST_TOOLS_PKGS}"
+RDEPENDS:${PN} += "${RUST_TOOLS_PKGS}"
 
 do_compile () {
     rust_runx build --stage 2 src/tools/clippy
@@ -29,8 +29,8 @@ do_install () {
 ALLOW_EMPTY_${PN} = "1"
 
 PKG_SYS_BINDIR = "${SDKPATHNATIVE}/usr/bin"
-FILES_${RUST_TOOLS_CLIPPY_PN} = "${PKG_SYS_BINDIR}/cargo-clippy ${PKG_SYS_BINDIR}/clippy-driver"
-FILES_${RUST_TOOLS_RUSTFMT_PN} = "${PKG_SYS_BINDIR}/rustfmt"
+FILES:${RUST_TOOLS_CLIPPY_PN} = "${PKG_SYS_BINDIR}/cargo-clippy ${PKG_SYS_BINDIR}/clippy-driver"
+FILES:${RUST_TOOLS_RUSTFMT_PN} = "${PKG_SYS_BINDIR}/rustfmt"
 
 SUMMARY_${PN} = "Rust helper tools"
 SUMMARY_${RUST_TOOLS_CLIPPY_PN} = "A collection of lints to catch common mistakes and improve your Rust code"
